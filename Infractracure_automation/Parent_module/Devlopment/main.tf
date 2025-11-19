@@ -1,8 +1,15 @@
 module "todo-rg" {
-  for_each = var.rg_details
+ 
   source      = "../../Child_module/azurerm_resource_group"
-  rg_name     =each.value.rg_name
-  rg_location = each.value.rg_location
+  rg_name="dev-todo-rg"
+    rg_location="Central India"
+}
+# 1 resource group added
+module "todo-rg1" {
+
+  source      = "../../Child_module/azurerm_resource_group"
+  rg_name="dev-todo-rg1"
+    rg_location="Central India"
 }
 
 
@@ -35,7 +42,6 @@ module "todo-backend-subnet" {
   virtual_network_name = "dev-todo-vnet"
   address_prefixes     = ["10.10.10.128/25"]
 }
-dard-1:Vm ke lie bhi alg-2 module bna rhe hai
 
 module "todo_linux_frontendvm" {
   depends_on             = [module.todo-frontend-subnet]
