@@ -6,12 +6,10 @@ module "todo-rg" {
 }
 # 1 resource group added
 module "todo-rg1" {
-
   source      = "../../Child_module/azurerm_resource_group"
-  rg_name="dev-todo-rg1"
+  rg_name="infra-test-todo-rg"
     rg_location="Central India"
 }
-
 
 
 module "todo-vnet" {
@@ -32,7 +30,6 @@ module "todo-frontend-subnet" {
   virtual_network_name = "dev-todo-vnet"
   address_prefixes     = ["10.10.10.0/25"]
 }
-
 
 module "todo-backend-subnet" {
   depends_on           = [module.todo-vnet]
